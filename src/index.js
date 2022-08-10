@@ -8,6 +8,7 @@ const MySQLStore = require('express-mysql-session');
 const passport = require('passport');
 const {database} = require('./keys');
 const multer = require('multer');
+const cors = require('cors');
 require('dotenv').config();
 
 //Inicializaciones
@@ -26,6 +27,7 @@ app.engine('.hbs', exphbs.engine({
 app.set('view engine', '.hbs');
 
 //Middlewares
+app.use(cors());
 app.use(session({
     secret: 'hola',
     resave: false,
