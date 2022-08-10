@@ -79,5 +79,16 @@ router.get('/delete/:id',isLoggedIn,async (req,res)=>{
 })
 
 
+router.get('/user', async(req, res) => {
+    const id = 1;
+    try {
+        const resultado =  await pool.query('SELECT * FROM semillero WHERE user_id = ?',[id]);
+        res.send(resultado);
+    }catch (error) {
+        console.log(error);
+    }
+})
+
+
 
 module.exports = router;
